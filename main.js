@@ -93,6 +93,20 @@ function createWindow() {
 app.whenReady().then(async () => {
   createWindow();
 
+  // Check if tmp folder for screenshots exists
+  tmpFolderPath = 'tmp'
+  async function createTmpFolder() {
+    try {
+      // Check if the folder exists
+      await fs.access(tmpFolderPath);
+    } catch (error) {
+      // If it doesn't exist, create it
+      await fs.mkdir(tmpFolderPath);
+      console.log(`Folder "${tmpFolderPath}" created.`);
+    }
+  }
+  createTmpFolder();
+
   app.on('activate', () => {
     if (BrowserWindow.getAllWindows().length === 0) {
       createWindow()
