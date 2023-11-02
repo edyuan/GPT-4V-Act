@@ -48,6 +48,7 @@ ${JSON.stringify(info)}
 
 ## instructions
 # observe the screenshot, and think about the next action
+# if you are unsure about what to do or there is ambiguity in the user's request, select type RequestInfoFromUser
 # output your response in a json markdown code block
 `;
 
@@ -301,6 +302,13 @@ app.whenReady().then(async () => {
                   keyCode: char
                 });
               }
+              
+              // escapes to get rid of pop up boxes obscuring screen
+              // this doesn't work for some reason
+              webview.sendInputEvent({
+                type: 'keyDown', 
+                keyCode: 'Escape'
+              });
               
               break;
             }
