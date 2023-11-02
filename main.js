@@ -304,10 +304,10 @@ app.whenReady().then(async () => {
               }
               
               // escapes to get rid of pop up boxes obscuring screen
-              // this doesn't work for some reason
+              // 'Escape' doesn't work for some reason but 'Tab' does
               webview.sendInputEvent({
                 type: 'keyDown', 
-                keyCode: 'Escape'
+                keyCode: 'Tab'
               });
               
               break;
